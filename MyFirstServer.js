@@ -5,6 +5,11 @@ http.createServer(function (req, res) {
     res.end("Hellow World");
 }).listen(8080);
 
+module.exports = {
+    HOST: "localhost",
+    USER: "root",
+    PASSWORD: "sTahvz6896",
+    DB: "mysql"};
 
-
+    
 
