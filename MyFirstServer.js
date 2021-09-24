@@ -5,6 +5,8 @@ http.createServer(function (req, res) {
     res.end("Hellow World");
 }).listen(8080);
 
+/*<script src="app.js"></script>*/
+
 module.exports = {
     HOST: "localhost",
     USER: "root",
@@ -34,6 +36,7 @@ app.listen(3000, () => {
     console.log("Server is running on port 3000."
     );
 });
+
 app.get("/customers", function (req, res) {
     sql.query("SELECT * FROM customers", (err, mysqlres) => {
         if (err) {

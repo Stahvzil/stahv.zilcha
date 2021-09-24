@@ -1,4 +1,5 @@
 var createError = require('http-errors');
+//import moduls
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -7,6 +8,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+//init the app
 var app = express();
 
 // view engine setup
@@ -37,5 +39,10 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// set port, listen for requests 
+app.listen(8000, () => {
+  console.log("Server is running on port 8000." );
+  }); 
 
 module.exports = app;
