@@ -1,5 +1,6 @@
 var http = require('http');
-
+var app1 = require('./app');
+var a = require('../stahv.zilcha/Stahv_Zilcha_app/');
 http.createServer(function (req, res) {
     res.writeHead(200, { 'Content-Type': 'text/html' });
     res.end("Hellow World");
@@ -31,11 +32,7 @@ app.get("/", (req, res) => {
     });
 });
 
-// set port, listen for requests
-app.listen(3000, () => {
-    console.log("Server is running on port 3000."
-    );
-});
+
 
 app.get("/customers", function (req, res) {
     sql.query("SELECT * FROM customers", (err, mysqlres) => {
@@ -50,7 +47,15 @@ app.get("/customers", function (req, res) {
     });
 });
 
+// set port, listen for requests
+app.listen(3000, () => {
+    console.log("Server is running on port 3000."
+    );
+});
 
-
+//CV route
+app.get('/app.js', function(req, res) {
+    res.sendFile(path.join(__dirname, '\app.js'))
+});
 
 
