@@ -1,6 +1,6 @@
 var http = require('http');
-var app1 = require('./app');
-var a = require('../stahv.zilcha/Stahv_Zilcha_app/');
+var a = require('../stahv.zilcha/Stahv_Zilcha_app');
+
 http.createServer(function (req, res) {
     res.writeHead(200, { 'Content-Type': 'text/html' });
     res.end("Hellow World");
@@ -17,7 +17,8 @@ module.exports = {
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-const sql = require("./db.js");
+const sql = require("./Stahv_Zilcha_app/DB/db");
+
 
 // parse requests of contenttype: application/json
 app.use(bodyParser.json());
@@ -26,13 +27,15 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 // simple route
+
+const path = require('path');
+const publicDirectory = path.join(__dirname,'/Stahv_Zilcha_app/public');
+app.use(express.static(publicDirectory));
+
+
 app.get("/", (req, res) => {
-    res.json({
-        message: "Welcome to web course example application."
+    res.sendFile(path.join(__dirname,"/Stahv_Zilcha_app/views/CV.html"));
     });
-});
-
-
 
 app.get("/customers", function (req, res) {
     sql.query("SELECT * FROM customers", (err, mysqlres) => {
